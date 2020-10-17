@@ -9,13 +9,5 @@ import { CarteleraRespuesta } from './interfaces/cartelera-respuesta';
 })
 export class AppComponent {
 
-  constructor (private PeliculasService : PeliculasService ) {
 
-    this.PeliculasService.recuperarCartelera()
-      .subscribe( (resp: CarteleraRespuesta) => {
-        console.log(resp);
-
-
-      })
-  }
 }
