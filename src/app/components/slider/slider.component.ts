@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import Swiper from 'swiper';
+
 import { Pelicula } from 'src/app/interfaces/cartelera-respuesta';
 
 @Component({
@@ -6,11 +8,20 @@ import { Pelicula } from 'src/app/interfaces/cartelera-respuesta';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, AfterViewInit {
 
   @Input() peliculas : Pelicula[];
 
   constructor() { }
+
+  ngAfterViewInit(): void {     //inicializar el swiper
+    const mySwiper = new Swiper('.swiper-container', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+    },
+    })
+  }
 
   ngOnInit(): void {
 
