@@ -12,10 +12,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   @Input() peliculas : Pelicula[];
 
+  public Swiper: Swiper; //Inicializado como una propiedad, para poder utilizarlo en el evento ng-click.
+
   constructor() { }
 
   ngAfterViewInit(): void {     //inicializar el swiper
-    const mySwiper = new Swiper('.swiper-container', {
+    this.Swiper = new Swiper('.swiper-container', {
     loop: true,
     slidesPerView: 1.1,
     centeredSlides: true,
@@ -23,7 +25,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     autoplay: {
       delay: 5000,
     },
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -31,4 +33,13 @@ export class SliderComponent implements OnInit, AfterViewInit {
     console.log(this.peliculas);
   }
 
+  onSlidePrev() {
+
+    this.Swiper.slidePrev();
+  }
+
+  onSlideNext() {
+
+    this.Swiper.slideNext();
+  }
 }
