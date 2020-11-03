@@ -1,6 +1,10 @@
 .swiper-container {
-  height: 330px;
+  height: 300px;
   width: 100%;
+}
+
+.swiper-slide {
+  border-radius: 4px;
 }
 
 .swiper-button-prev, .swiper-button-next {

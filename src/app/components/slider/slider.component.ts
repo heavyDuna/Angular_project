@@ -17,6 +17,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {     //inicializar el swiper
     const mySwiper = new Swiper('.swiper-container', {
     loop: true,
+    slidesPerView: 1.1,
+    centeredSlides: true,
+    spaceBetween: 30,
     autoplay: {
       delay: 5000,
     },
