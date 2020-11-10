@@ -30,7 +30,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    console.log(this.peliculas);
+    //console.log(this.peliculas);
   }
 
   onSlidePrev() {
