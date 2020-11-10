@@ -17,7 +17,7 @@ export class PeliculasService {
   get urlParams() {
 
     return {                                          //el objeto con los parámetros que necesitan todas las peticiones
-      api_key: 'f66e3c1e84244a1d80ef2e4b9f969750',
+      api_key: 'KEY',
       language: 'es-ES',
       page: this.carteleraPage.toString()
     }
