@@ -7,10 +7,19 @@
     <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
     </ul>
 
-    <form class="d-flex">
-      <input class="form-control mr-2" type="search" placeholder="Buscar película" aria-label="Search"><!--type search x para borrar campo-->
-      <button class="btn btn-outline-success" type="submit">Buscar</button>
-    </form>
+    <div class="d-flex">
+      <input #buscarTxt
+             (keyup.enter) = "buscarPelicula( buscarTxt.value )"
+             class="form-control mr-2"
+             type="search"
+             placeholder="Buscar película"
+             aria-label="Search">     <!--type search x para borrar campo, #buscarTxt referencia al input, (keyup.enter) para hacerlo pulsando-->
+      <button
+             (click) = "buscarPelicula( buscarTxt.value )"
+             class="btn btn-outline-success"
+             type="submit">Buscar
+      </button> <!--(click) para hacerlo pinchando Buscar-->
+    </div>
   </div>
   </div>
 </nav>
