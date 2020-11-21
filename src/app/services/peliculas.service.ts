@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { CarteleraRespuesta } from '../interfaces/cartelera-respuesta';
+import { tap, map } from 'rxjs/operators';
+import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,17 @@ export class PeliculasService {
         this.carteleraPage += 1;    //se incrementa la página de la cartelera
       })
     );
+  }
+
+
+  buscarPeliculas( texto: string ):Observable<Pelicula[]> {
+
+    const params = {...this.urlParams, page: '1', query: texto };    //desestructurando el objeto urlParams() para tener en la page 1
+
+    return this.http.get<CarteleraRespuesta>(`${ this.url }/search/movie`,{
+      params
+    }).pipe(
+      map( resp => resp.results )
+    )
   }
 }
