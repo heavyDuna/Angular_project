@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Pelicula } from 'src/app/interfaces/cartelera-respuesta';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
@@ -9,6 +10,9 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 })
 export class SearchComponent implements OnInit {
 
+  public texto: string = '';
+  public peliculas: Pelicula[] = [];
+
   constructor( private activatedRoute: ActivatedRoute,      //para obtener el valor de la url
                private peliculasServicio: PeliculasService ) {        //inyecto el servicio
 
@@ -17,8 +21,12 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.params.subscribe( params => {
+
+      this.texto = params.texto;
+
       this.peliculasServicio.buscarPeliculas( params.texto ).subscribe( peliculas => {
-        //console.log(peliculas[0].title);
+        this.peliculas = peliculas;
+        //console.log(this.peliculas[0].title);
       })
     })
 
