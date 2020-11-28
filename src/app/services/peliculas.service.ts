@@ -10,7 +10,7 @@ import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta'
 export class PeliculasService {
 
   private url: string = 'https://api.themoviedb.org/3';
-  private carteleraPage = 1;
+  private carteleraPagina = 1;
 
   constructor( private http : HttpClient ) { }
 
@@ -19,8 +19,13 @@ export class PeliculasService {
     return {                                          //el objeto con los parámetros que necesitan todas las peticiones
       api_key: 'KEY',
       language: 'es-ES',
-      page: this.carteleraPage.toString()
+      page: this.carteleraPagina.toString()
     }
+  }
+
+  resetPeliculasSlider() {
+    this.carteleraPagina = 1;
+
   }
 
   recuperarCartelera():Observable<CarteleraRespuesta> {
@@ -29,7 +34,7 @@ export class PeliculasService {
       params: this.urlParams      //parámetros de la query que concateno a la url
     }).pipe(
       tap( () => {                //cada vez que el CarteleraResponse emita un valor
-        this.carteleraPage += 1;    //se incrementa la página de la cartelera
+        this.carteleraPagina += 1;    //se incrementa la página de la cartelera
       })
     );
   }
