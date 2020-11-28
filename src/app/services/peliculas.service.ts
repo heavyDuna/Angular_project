@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta';
+import { PeliculaDetalle } from '../interfaces/pelicula-detalle';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,12 @@ export class PeliculasService {
     }).pipe(
       map( resp => resp.results )
     )
+  }
+
+  recuperarDetallesPelicula( id: string ):Observable<PeliculaDetalle> {
+
+    return this.http.get<PeliculaDetalle>(`${ this.url }/movie/${ id }`,{
+      params: this.urlParams                                        //parámetros de la query que concateno a la url
+    });
   }
 }
