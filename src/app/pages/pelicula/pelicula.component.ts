@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { PeliculaDetalle } from 'src/app/interfaces/pelicula-detalle';
 import { PeliculasService } from 'src/app/services/peliculas.service';
 
 @Component({
@@ -9,8 +11,11 @@ import { PeliculasService } from 'src/app/services/peliculas.service';
 })
 export class PeliculaComponent implements OnInit {
 
+  public pelicula: PeliculaDetalle;
+
   constructor( private activatedRoute: ActivatedRoute,
-               private peliculasService: PeliculasService ) { }
+               private peliculasService: PeliculasService,
+               private location: Location ) { }       //información de la localización del usuario
 
   ngOnInit(): void {
 
@@ -18,7 +23,12 @@ export class PeliculaComponent implements OnInit {
 
     this.peliculasService.recuperarDetallesPelicula( id ).subscribe( pelicula => {
       console.log(pelicula);
+      this.pelicula = pelicula;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
