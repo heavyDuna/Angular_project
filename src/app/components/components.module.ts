@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SliderComponent } from './slider/slider.component';
 import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-poster-grid.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { CastSliderComponent } from './cast-slider/cast-slider.component';
 
 
 
@@ -12,12 +13,14 @@ import { PipesModule } from '../pipes/pipes.module';
   declarations: [
     NavbarComponent,
     SliderComponent,
-    PeliculasPosterGridComponent
+    PeliculasPosterGridComponent,
+    CastSliderComponent
   ],
-  exports: [
+  exports: [                          //para poder utilizarlo fuera también
     NavbarComponent,
     SliderComponent,
-    PeliculasPosterGridComponent
+    PeliculasPosterGridComponent,
+    CastSliderComponent
   ],
   imports: [
     CommonModule,

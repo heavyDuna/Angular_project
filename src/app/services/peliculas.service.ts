@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta';
 import { PeliculaDetalle } from '../interfaces/pelicula-detalle';
+import { CreditosRespuesta, Cast } from '../interfaces/creditos-respuesta';
 
 @Injectable({
   providedIn: 'root'
@@ -52,10 +53,20 @@ export class PeliculasService {
     )
   }
 
-  recuperarDetallesPelicula( id: string ):Observable<PeliculaDetalle> {
+  recuperarDetallesPelicula( id: string )  {
 
     return this.http.get<PeliculaDetalle>(`${ this.url }/movie/${ id }`,{
       params: this.urlParams                                        //parámetros de la query que concateno a la url
     });
   }
+
+  recuperarCastPelicula( id: string ):Observable<Cast[]> {
+
+    return this.http.get<CreditosRespuesta>(`${ this.url }/movie/${ id }/credits`,{
+      params: this.urlParams
+    }).pipe (
+      map( resp => resp.cast )
+    )
+  }
+
 }
