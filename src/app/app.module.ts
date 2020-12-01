@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
@@ -17,10 +18,26 @@ import { PeliculasService } from './services/peliculas.service';
     HttpClientModule,
     AppRoutingModule,
     ComponentsModule,  //para tener cualquier componente definido en components.module
-    PagesModule
+    PagesModule,
+    SocialLoginModule
+
   ],
   providers: [
-    PeliculasService
+    PeliculasService,
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            'google_id'
+          ),
+        },
+      ],
+    } as SocialAuthServiceConfig,
+  }
   ],
   bootstrap: [
     AppComponent
