@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { PeliculasService } from './services/peliculas.service';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { PeliculasService } from './services/peliculas.service';
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider(
-            'google_id'
+            environment.google_id
           ),
         },
       ],

@@ -5,6 +5,7 @@ import { tap, map } from 'rxjs/operators';
 import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta';
 import { PeliculaDetalle } from '../interfaces/pelicula-detalle';
 import { CreditosRespuesta, Cast } from '../interfaces/creditos-respuesta';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class PeliculasService {
   get urlParams() {
 
     return {                                          //el objeto con los parámetros que necesitan todas las peticiones
-      api_key: 'KEY',
+      api_key: environment.api_key,
       language: 'es-ES',
       page: this.carteleraPagina.toString()
     }
