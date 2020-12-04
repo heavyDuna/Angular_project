@@ -14,6 +14,10 @@ constructor(private authService: SocialAuthService) { }
 
   image:any = "https://upload.wikimedia.org/wikipedia/commons/3/34/PICA.jpg";
 
+  ngOnInit(): void {
+
+  }
+
   login():void {
 
     if( this.loggedIn  ) {
