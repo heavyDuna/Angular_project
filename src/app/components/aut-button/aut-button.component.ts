@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { SocialAuthService, GoogleLoginProvider} from 'angularx-social-login';
-
+import { SocialAuthService, GoogleLoginProvider } from 'angularx-social-login';
 @Component({
   selector: 'app-aut-button',
   templateUrl: './aut-button.component.html',
@@ -9,24 +8,28 @@ import { SocialAuthService, GoogleLoginProvider} from 'angularx-social-login';
 })
 export class AutButtonComponent implements OnInit {
 
-user:any;
+  loggedIn: boolean = false;
 
 constructor(private authService: SocialAuthService) { }
 
-  ngOnInit(): void {
-
-  }
+  image:any = "https://upload.wikimedia.org/wikipedia/commons/3/34/PICA.jpg";
 
   login():void {
-    //platform = GoogleLoginProvider.PROVIDER_ID;
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
 
+    if( this.loggedIn  ) {
+      this.logout();
+    } else {
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response) => {
+        this.loggedIn = true;
+        this.image = response.photoUrl;
+      });
+    }
   }
 
   logout():void {
-    //platform = GoogleLoginProvider.PROVIDER_ID;
+
     this.authService.signOut();
-
+    this.loggedIn = false;
+    this.image = "https://upload.wikimedia.org/wikipedia/commons/3/34/PICA.jpg";
   }
-
 }

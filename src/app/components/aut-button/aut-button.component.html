@@ -1,10 +1,12 @@
-<button class="btn btn-outline-info"
-                (click)="login()">
-                LOGIN
-        </button>
-
-        <button class="btn btn-outline-info"
-                (click)="logout()">
-                LOGOUT
-        </button>
+<ul class="navbar-nav ml-auto nav-flex-icons">
+  <li class="nav-item avatar">
+    <a class="nav-link p-0" >
+      <img [src]="image"
+           class="rounded-circle z-depth-0"
+           (click)="login()"
+           alt="avatar"
+           height="55">
+    </a>
+  </li>
+</ul>
 
