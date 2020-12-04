@@ -1,25 +1,52 @@
-<nav class="navbar navbar-expand-sm">
-  <div class="container-fluid">
-  <a class="navbar-brand" routerLink="/home">Películas</a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+  <!-- Logo sandrix -->
+  <a class="navbar-brand" href="#">Sandrix</a>
+  <!-- Botón desplegar pantalla pequeña -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dropNav"
+    aria-controls="dropNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Parte que se añade al desplegable -->
+  <div class="collapse navbar-collapse" id="dropNav">
+    <!-- Enlaces -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home"><span class="fas fa-home"></span> INICIO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home"><span class="fas fa-plus"></span> MI LISTA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home"><span class="fas fa-film"> </span> PELÍCULAS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home"><span class="fab fa-youtube"> </span> SERIES</a>
+      </li>
     </ul>
+    <hr>
+    <hr>
+    <hr>
+    <!-- Buscador -->
 
-    <div class="d-flex">
-      <input #buscarTxt
-             (keyup.enter) = "buscarPelicula( buscarTxt.value )"
-             class="form-control mr-2"
-             type="search"
-             placeholder="Buscar película"
-             aria-label="Search">     <!--type search x para borrar campo, #buscarTxt referencia al input, (keyup.enter) para hacerlo pulsando-->
-      <button
-             (click) = "buscarPelicula( buscarTxt.value )"
-             class="btn btn-outline-success"
-             type="submit">Buscar
-      </button> <!--(click) para hacerlo pinchando Buscar-->
-    </div>
-  </div>
+
+      <div class="d-flex">
+        <input #buscarTxt
+        (keyup.enter) = "buscarPelicula( buscarTxt.value )"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="Búsqueda"
+        aria-label="Search"
+        aria-describedby="basic-addon11">      <!--type search x para borrar campo, #buscarTxt referencia al input, (keyup.enter) para hacerlo pulsando-->
+        <button
+        (click) = "buscarPelicula( buscarTxt.value )"
+        class="btn btn-outline-success"
+        type="submit">Buscar
+        </button>
+      </div>
+      <hr>
+      <!-- Imagen login -->
+      <app-aut-button>
+      </app-aut-button>
   </div>
 </nav>
