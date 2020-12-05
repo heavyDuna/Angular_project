@@ -33,14 +33,15 @@
 
     <div class="row mt-5">
       <div class="col">
-        <button class="btn btn-outline-info"
+        <button class="btn btn-light mr-3"
+                id="miclase"
                 (click)="goBack()">
-                Volver
+                <i class="fas fa-chevron-circle-left"></i>
+                VOLVER
         </button>
+        <app-modal></app-modal>
       </div>
-
     </div>
-
   </div>
 </div>
 <!-- Slider con actores -->
@@ -48,7 +49,6 @@
   <div class="col">
       <app-cast-slider [cast]="cast">
       </app-cast-slider>
-
   </div>
 </div>
 
