@@ -5,6 +5,7 @@ import { tap, map } from 'rxjs/operators';
 import { CarteleraRespuesta, Pelicula } from '../interfaces/cartelera-respuesta';
 import { PeliculaDetalle } from '../interfaces/pelicula-detalle';
 import { CreditosRespuesta, Cast } from '../interfaces/creditos-respuesta';
+import { VideoPelicula } from '../interfaces/video-pelicula';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -68,6 +69,13 @@ export class PeliculasService {
     }).pipe (
       map( resp => resp.cast )
     )
+  }
+
+  recuperarVideoPelicula( key: any )  {
+
+    return this.http.get<VideoPelicula>(`${ this.url }/movie/${ key }/videos`,{
+      params: this.urlParams
+    });
   }
 
 }
