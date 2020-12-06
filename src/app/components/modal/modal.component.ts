@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { PeliculaDetalle } from 'src/app/interfaces/pelicula-detalle';
+import { VideoPelicula } from 'src/app/interfaces/video-pelicula';
+import { PeliculasService } from 'src/app/services/peliculas.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-modal',
@@ -8,11 +12,30 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalComponent implements OnInit {
 
-  closeResult = '';
+  @Input() pelicula: PeliculaDetalle;
 
-  constructor(private modalService: NgbModal) { }
+  closeResult = '';
+  public url: any;
+  public video: VideoPelicula;
+  public key: any;
+
+  safeSrc: SafeResourceUrl;
+
+  constructor(private modalService: NgbModal,
+              private peliculasService: PeliculasService,
+              private sanitizer: DomSanitizer ) {
+
+  }
 
   ngOnInit(): void {
+
+    this.peliculasService.recuperarVideoPelicula( this.pelicula.id ).subscribe( video => {
+      this.key = video.results[0].key;
+      this.url = `https://www.youtube.com/embed/${this.key}?autoplay=1&mute=1`;
+
+      this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+    });
+
   }
 
   open(content) {

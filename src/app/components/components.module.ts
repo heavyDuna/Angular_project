@@ -7,6 +7,7 @@ import { PeliculasPosterGridComponent } from './peliculas-poster-grid/peliculas-
 import { PipesModule } from '../pipes/pipes.module';
 import { CastSliderComponent } from './cast-slider/cast-slider.component';
 import { AutButtonComponent } from './aut-button/aut-button.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -16,14 +17,16 @@ import { AutButtonComponent } from './aut-button/aut-button.component';
     SliderComponent,
     PeliculasPosterGridComponent,
     CastSliderComponent,
-    AutButtonComponent
+    AutButtonComponent,
+    ModalComponent
   ],
   exports: [                          //para poder utilizarlo fuera también
     NavbarComponent,
     SliderComponent,
     PeliculasPosterGridComponent,
     CastSliderComponent,
-    AutButtonComponent
+    AutButtonComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

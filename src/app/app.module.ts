@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { PeliculasService } from './services/peliculas.service';
 import { environment } from 'src/environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { environment } from 'src/environments/environment';
     AppRoutingModule,
     ComponentsModule,  //para tener cualquier componente definido en components.module
     PagesModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgbModule
 
   ],
   providers: [
