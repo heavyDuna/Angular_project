@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';      //modulo con el inyectable HttpClient
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class PeliculasService {
   private url: string = 'https://api.themoviedb.org/3';
   private carteleraPagina = 1;
 
-  constructor( private http : HttpClient ) { }
+  constructor( private http : HttpClient ) { }        //la inyectamos para poder usarla
 
   get urlParams() {
 
@@ -34,19 +34,20 @@ export class PeliculasService {
 
   recuperarCartelera():Observable<CarteleraRespuesta> {
 
-    return this.http.get<CarteleraRespuesta>(`${ this.url }/movie/now_playing`,{
-      params: this.urlParams      //parámetros de la query que concateno a la url
+    return this.http.get<CarteleraRespuesta>(`${ this.url }/movie/now_playing`,{    // con la propiedad this.http invocamos los servicios REST
+      params: this.urlParams                                                        //parámetros de la query que concateno a la url
     }).pipe(
-      tap( () => {                //cada vez que el CarteleraResponse emita un valor
-        this.carteleraPagina += 1;    //se incrementa la página de la cartelera
+      tap( () => {                                                                  //cada vez que el CarteleraResponse emita un valor
+        this.carteleraPagina += 1;                                                  //se incrementa la página de la cartelera
       })
     );
+
   }
 
 
   buscarPeliculas( texto: string ):Observable<Pelicula[]> {
 
-    const params = {...this.urlParams, page: '1', query: texto };    //desestructurando el objeto urlParams() para tener en la page 1
+    const params = {...this.urlParams, page: '1', query: texto };                   //desestructurando el objeto urlParams() para tener en la page 1
 
     return this.http.get<CarteleraRespuesta>(`${ this.url }/search/movie`,{
       params
@@ -55,10 +56,10 @@ export class PeliculasService {
     )
   }
 
-  recuperarDetallesPelicula( id: string )  {
+  recuperarDetallesPelicula( id: string ):Observable<PeliculaDetalle>  {
 
     return this.http.get<PeliculaDetalle>(`${ this.url }/movie/${ id }`,{
-      params: this.urlParams                                        //parámetros de la query que concateno a la url
+      params: this.urlParams                                                         //parámetros necesarios de la query que concateno a la url
     });
   }
 
@@ -71,7 +72,7 @@ export class PeliculasService {
     )
   }
 
-  recuperarVideoPelicula( key: any )  {
+  recuperarVideoPelicula( key: any ):Observable<VideoPelicula>  {
 
     return this.http.get<VideoPelicula>(`${ this.url }/movie/${ key }/videos`,{
       params: this.urlParams

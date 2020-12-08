@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
       return;
     }
 
-    this.router.navigate(['/search', textoABuscar]);            //llamada al array de app-routing
+    this.router.navigate(['/search', textoABuscar]);                      //llamada al array de app-routing
   }
 
 }

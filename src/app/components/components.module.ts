@@ -20,7 +20,7 @@ import { ModalComponent } from './modal/modal.component';
     AutButtonComponent,
     ModalComponent
   ],
-  exports: [                          //para poder utilizarlo fuera también
+  exports: [                                      //para poder utilizarlo fuera también
     NavbarComponent,
     SliderComponent,
     PeliculasPosterGridComponent,

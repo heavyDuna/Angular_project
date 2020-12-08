@@ -36,10 +36,10 @@
         <input #buscarTxt
         (keyup.enter) = "buscarPelicula( buscarTxt.value )"
         class="form-control mr-sm-2"
-        type="text"
+        type="search"
         placeholder="Búsqueda"
         aria-label="Search"
-        aria-describedby="basic-addon11">      <!--type search x para borrar campo, #buscarTxt referencia al input, (keyup.enter) para hacerlo pulsando-->
+        aria-describedby="basic-addon11">                                 <!--type search x para borrar campo, #buscarTxt referencia al input, (keyup.enter) para hacerlo pulsando-->
         <button
         (click) = "buscarPelicula( buscarTxt.value )"
         class="btn btn-outline-success"

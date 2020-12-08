@@ -13,8 +13,8 @@ export class SearchComponent implements OnInit {
   public texto: string = '';
   public peliculas: Pelicula[] = [];
 
-  constructor( private activatedRoute: ActivatedRoute,      //para obtener el valor de la url
-               private peliculasServicio: PeliculasService ) {        //inyecto el servicio
+  constructor( private activatedRoute: ActivatedRoute,                                //para obtener el valor de la url
+               private peliculasServicio: PeliculasService ) {                        //inyecto el servicio
 
   }
 
@@ -24,9 +24,8 @@ export class SearchComponent implements OnInit {
 
       this.texto = params.texto;
 
-      this.peliculasServicio.buscarPeliculas( params.texto ).subscribe( peliculas => {
+      this.peliculasServicio.buscarPeliculas( this.texto ).subscribe( peliculas => {
         this.peliculas = peliculas;
-        //console.log(this.peliculas[0].title);
       })
     })
 

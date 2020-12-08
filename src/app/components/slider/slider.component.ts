@@ -12,11 +12,11 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   @Input() peliculas : Pelicula[];
 
-  public Swiper: Swiper; //Inicializado como una propiedad, para poder utilizarlo en el evento ng-click.
+  public Swiper: Swiper;                                      //Inicializado como una propiedad, para poder utilizarlo en el evento ng-click.
 
   constructor() { }
 
-  ngAfterViewInit(): void {     //inicializar el swiper
+  ngAfterViewInit(): void {                                   //inicializar el swiper
     this.Swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
     centeredSlides: true,

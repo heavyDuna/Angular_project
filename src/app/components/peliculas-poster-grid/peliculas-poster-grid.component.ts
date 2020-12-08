@@ -15,12 +15,10 @@ export class PeliculasPosterGridComponent implements OnInit {
   constructor( private router: Router ) { }
 
   ngOnInit(): void {
-    //console.log(this.peliculas);
   }
 
   clickPelicula( peliculaDetalle: Pelicula ) {
-    console.log(peliculaDetalle)
-    this.router.navigate(['/pelicula', peliculaDetalle.id]);            //navegación a pelicula
+    this.router.navigate(['/pelicula', peliculaDetalle.id]);                      //navegación a pelicula
   }
 
 }

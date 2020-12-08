@@ -17,19 +17,17 @@ export class PeliculaComponent implements OnInit {
 
   constructor( private activatedRoute: ActivatedRoute,
                private peliculasService: PeliculasService,
-               private location: Location ) { }       //información de la localización del usuario
+               private location: Location ) { }                             //información de la localización del usuario
 
   ngOnInit(): void {
 
-    const id = this.activatedRoute.snapshot.params.id;      //activatedRoute para coger el id de pelicula de la url y tenerlo siempre
+    const id = this.activatedRoute.snapshot.params.id;                      //activatedRoute para coger el id de pelicula de la url y tenerlo siempre
 
     this.peliculasService.recuperarDetallesPelicula( id ).subscribe( pelicula => {
-      //console.log(pelicula);
       this.pelicula = pelicula;
     });
 
     this.peliculasService.recuperarCastPelicula ( id ).subscribe ( cast => {
-      //console.log(cast);
       this.cast = cast.filter( actor => actor.profile_path !== null  );
     });
 

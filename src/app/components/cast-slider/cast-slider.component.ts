@@ -24,7 +24,6 @@ export class CastSliderComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    //console.log(this.cast)
   }
 
 }
