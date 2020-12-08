@@ -10,7 +10,7 @@ export class PosterPipe implements PipeTransform {
     if ( posterpelicula ) {
       return `https:image.tmdb.org/t/p/w500${ posterpelicula }`;
     }else {
-      return 'https:image.tmdb.org/t/p/w500/oVY4gUXsOfSQIWm43fRFNK8GZYs.jpg';
+      return '../../assets/no-image-available.jpg';
     }
   }
 
