@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import Swiper from 'swiper';
+import Swiper, { Autoplay } from 'swiper';
 
 import { Pelicula } from 'src/app/interfaces/cartelera-respuesta';
 
@@ -18,19 +18,21 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {     //inicializar el swiper
     this.Swiper = new Swiper('.swiper-container', {
-    loop: true,
-    slidesPerView: 1.1,
+    slidesPerView: 1,
     centeredSlides: true,
-    spaceBetween: 30,
+    loop: true,
     autoplay: {
       delay: 5000,
+      disableOnInteraction: false,
     },
     });
   }
 
   ngOnInit(): void {
 
-    //console.log(this.peliculas);
+    Swiper.use([
+      Autoplay
+    ]);
   }
 
   onSlidePrev() {

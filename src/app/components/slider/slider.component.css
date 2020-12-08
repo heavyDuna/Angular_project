@@ -5,6 +5,7 @@
 
 .swiper-slide {
   border-radius: 4px;
+  font-size: 16px;
 }
 
 .swiper-button-prev, .swiper-button-next {
@@ -17,4 +18,8 @@
   padding: 5px 30px;
   position: absolute;
   width: 100%;
+}
+
+h3 {
+  font-size: 25px;
 }
